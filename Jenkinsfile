@@ -20,6 +20,7 @@ pipeline {
         }
         stage('Deliver') { 
             steps {
+                sh 'python3 install pyinstaller'
                 sh "pyinstaller --onefile add2vals.py" 
             }
             post {
