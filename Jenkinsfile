@@ -26,11 +26,7 @@ pipeline {
                 sh 'python3 -m PyInstaller -v'
                 sh 'python3 -m PyInstaller add2vals.py'
             }
-            post {
-                success {
-                    archiveArtifacts 'dist/add2vals' 
-                }
-            }
+            
         }
         
     }
