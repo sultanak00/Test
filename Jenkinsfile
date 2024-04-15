@@ -19,5 +19,15 @@ pipeline {
                 }
             }
         }
+        stage('Deliver') {
+            steps {
+                sh "pyinstaller --onefile add2vals.py"
+            }
+            post {
+                success {
+                    archiveArtifacts 'dist/add2vals'
+                }
+            }
+        }
     }
 }
