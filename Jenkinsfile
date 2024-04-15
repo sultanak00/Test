@@ -9,7 +9,8 @@ pipeline {
         }
         stage('Test') { 
             steps {
-                sh 'python3 -m py.test --junit-xml test-reports/results.xml test_calc.py' 
+                python3 -m pip install numpy pytest
+                sh 'python3 -m pytest --junit-xml test-reports/results.xml test_calc.py' 
             }
             post {
                 always {
