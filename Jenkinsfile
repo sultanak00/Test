@@ -10,7 +10,6 @@ pipeline {
         stage('Test') { 
             steps {
                 
-                sh 'python3 -m pip install numpy pytest'
                 sh 'python3 -m pytest --junit-xml test-reports/results.xml test_calc.py' 
             }
             post {
@@ -19,16 +18,6 @@ pipeline {
                 }
             }
         }
-        stage('Deliver') {
-            steps {
-                sh 'python3 -m pip install numpy pyinstaller'
-                sh 'python3 -m pyinstaller --onefile add2vals.py'
-            }
-            post {
-                success {
-                    archiveArtifacts 'dist/add2vals'
-                }
-            }
-        }
+        
     }
 }
