@@ -13,7 +13,7 @@ pipeline {
         stage('Test') { 
             steps {
                 
-                sh 'pytest --junit-xml test-reports/results.xml test_calc.py' 
+                sh 'python3 -m pytest --junit-xml test-reports/results.xml test_calc.py' 
             }
             post {
                 always {
@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Deliver') { 
             steps {
-                sh 'pyinstaller --onefile add2vals.py'
+                sh 'python3 -m py_installer --onefile add2vals.py'
             }
             post {
                 success {
